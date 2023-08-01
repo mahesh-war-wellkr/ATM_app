@@ -605,7 +605,7 @@ int main()
 {
 
     load_customer_data();
-
+    load_atm_data();
     char choice;
     int account_number, pin, i;
     while (1)
