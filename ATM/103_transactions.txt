@@ -1,0 +1,2 @@
+103  Transfer_from_ Credit 2000.00 30100.00
+103  Transfer_from_ Credit 2000.00 36100.00

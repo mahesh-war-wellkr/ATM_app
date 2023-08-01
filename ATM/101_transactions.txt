@@ -1,0 +1,3 @@
+101  Transfer_to_ Debit 2000.00 16234.00
+101  Cash_Withdrawal Debit 2000.00 8234.00
+101  Transfer_to_ Debit 2000.00 6234.00
