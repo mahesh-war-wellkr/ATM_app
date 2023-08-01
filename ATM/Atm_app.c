@@ -40,7 +40,7 @@ struct transaction_data
 void loading_cash_to_atm()
 {
     int type_of_notes, no_of_notes, i;
-    printf("\n\n -----------------------------------LOAD-CASH-------------------------------------------\n\n");
+    printf("\n\n *-----------------------------------LOAD-CASH-------------------------------------------*\n\n");
 
     for (i = 0; i < NUMBER_OF_NOTE_TYPE; i++)
     {
@@ -55,13 +55,13 @@ void loading_cash_to_atm()
         }
         else
         {
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Invalid input. Number of notes should be non-negative.\n");
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
             i--;
         }
     }
-    printf("\n\n ---------------------------------------------------------------------------------------");
+    printf("\n\n *---------------------------------------------------------------------------------------*");
 }
 
 // saving the data loaded to a file
@@ -71,9 +71,9 @@ void save_atm_data()
     int i;
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Error opening the atm data file for writing.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -92,9 +92,9 @@ void load_atm_data()
     int i;
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Error opening atm data file for loading.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -102,9 +102,9 @@ void load_atm_data()
     {
         if (fscanf(file, "%d %d", &atm_data[i].type_of_notes, &atm_data[i].no_of_notes) != 2)
         {
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Error reading atm data from file for scanning.\n");
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
             break;
         }
     }
@@ -118,9 +118,9 @@ void load_customer_data()
     FILE *file = fopen("customer_data.txt", "r");
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Error opening customer data because there is no data.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -142,7 +142,7 @@ void load_customer_data()
 void show_customer_details()
 {
     int i;
-    printf("\n\n ---------------------------------CUSTOMER-DETAILS--------------------------------------\n\n");
+    printf("\n\n *---------------------------------CUSTOMER-DETAILS--------------------------------------*\n\n");
     printf("Acc No\tAccount Holder\tPin Number\tAccount Balance\n");
     for (i = 0; i < number_of_customers; i++)
     {
@@ -150,7 +150,7 @@ void show_customer_details()
                customers[i].account_holder, customers[i].pin,
                customers[i].account_balance);
     }
-    printf("\n\n ---------------------------------------------------------------------------------------");
+    printf("\n\n *---------------------------------------------------------------------------------------*");
 }
 
 // saving the customer data
@@ -160,9 +160,9 @@ void save_customer_data()
     int i;
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Error opening customer data file for writing.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -210,9 +210,9 @@ void log_transaction(int account_number, const char *description, const char *cr
     FILE *file = fopen(filename, "a");
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Error opening the transaction file.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -236,17 +236,17 @@ void check_balance(int account_number)
 
     if (index != -1)
     {
-        printf("\n\n ---------------------------------ACCOUNT-BALANCE---------------------------------------\n\n");
+        printf("\n\n *---------------------------------ACCOUNT-BALANCE---------------------------------------*\n\n");
         printf("Account Holder: %s\n", customers[index].account_holder);
         printf("Account Number: %d\n", customers[index].account_number);
         printf("Account Balance: Rs. %.2f \n", customers[index].account_balance);
-        printf("\n\n ---------------------------------------------------------------------------------------");
+        printf("\n\n *---------------------------------------------------------------------------------------*");
     }
     else
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Customer with account number %d was not found.\n", account_number);
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
     }
 }
 
@@ -268,7 +268,7 @@ void withdraw_money(int account_number)
     {
         float amount;
         int v_pin;
-        printf("\n\n ---------------------------------------WITHDRAW-MONEY----------------------------------\n\n");
+        printf("\n\n *---------------------------------------WITHDRAW-MONEY----------------------------------*\n\n");
         printf("Enter the amount to withdraw: ");
         scanf("%f", &amount);
         printf("Enter the pin: ");
@@ -312,9 +312,9 @@ void withdraw_money(int account_number)
                         }
                         else
                         {
-                            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                             printf("Insuficient fund in atm");
-                            printf("\n-------------------------------------------------------------------------\n\n");
+                            printf("\n*-------------------------------------------------------------------------*\n\n");
                         }
                     }
                     else if (amount > 5000)
@@ -331,9 +331,9 @@ void withdraw_money(int account_number)
                         }
                         else
                         {
-                            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                             printf("Insuficient fund in atm");
-                            printf("\n-------------------------------------------------------------------------\n\n");
+                            printf("\n*-------------------------------------------------------------------------*\n\n");
                         }
                     }
 
@@ -347,34 +347,34 @@ void withdraw_money(int account_number)
                     float closing_balance = customers[index].account_balance;
                     log_transaction(account_number, "Cash_Withdrawal", "Debit", amount, closing_balance);
                     printf("Amount Rs. %.2f withdrawn successfully.\n", amount);
-                    printf("\n\n ---------------------------------------------------------------------------------------");
+                    printf("\n\n *---------------------------------------------------------------------------------------*");
                 }
                 else
                 {
-                    printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                    printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                     printf("Insufficient account balance.\n");
-                    printf("\n-------------------------------------------------------------------------\n\n");
+                    printf("\n*-------------------------------------------------------------------------*\n\n");
                 }
             }
             else
             {
-                printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                 printf("Invalid amount. Withdrawal amount should be between Rs. 100 and Rs. 10,000.\n");
-                printf("\n-------------------------------------------------------------------------\n\n");
+                printf("\n*-------------------------------------------------------------------------*\n\n");
             }
         }
         else
         {
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Incorrect pin entered");
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
         }
     }
     else
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Customer with account number %d was not found.\n", account_number);
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
     }
 }
 
@@ -395,7 +395,7 @@ void transfer_money(int account_number)
     {
         int recipient_account_number, amount;
 
-        printf("\n\n ----------------------------------TRANSFER-MONEY---------------------------------------\n\n");
+        printf("\n\n *----------------------------------TRANSFER-MONEY---------------------------------------*\n\n");
         printf("Enter the recipient's account number: ");
         scanf("%d", &recipient_account_number);
 
@@ -431,41 +431,41 @@ void transfer_money(int account_number)
                         float recipient_closing_balance = customers[recipient_index].account_balance;
                         log_transaction(recipient_account_number, "Transfer_from_", "Credit", amount, recipient_closing_balance);
                         printf("Amount Rs. %d transferred successfully to Account Number %d.\n", amount, recipient_account_number);
-                        printf("\n\n ---------------------------------------------------------------------------------------");
+                        printf("\n\n *---------------------------------------------------------------------------------------*");
                     }
                     else
                     {
-                        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                         printf("Insufficient account balance for the transfer.\n");
-                        printf("\n-------------------------------------------------------------------------\n\n");
+                        printf("\n*-------------------------------------------------------------------------*\n\n");
                     }
                 }
                 else
                 {
-                    printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                    printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                     printf("Invalid amount. Transfer amount should be between Rs. 1000 and Rs. 10,000.\n");
-                    printf("\n-------------------------------------------------------------------------\n\n");
+                    printf("\n*-------------------------------------------------------------------------*\n\n");
                 }
             }
             else
             {
-                printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                 printf("Incorrect pin entered");
-                printf("\n-------------------------------------------------------------------------\n\n");
+                printf("\n*-------------------------------------------------------------------------*\n\n");
             }
         }
         else
         {
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Recipient with account number %dwas not found.\n", recipient_account_number);
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
         }
     }
     else
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("Customer with account number %d was not found.\n", account_number);
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
     }
 }
 
@@ -473,7 +473,7 @@ void transfer_money(int account_number)
 void check_atm_balance()
 {
     int i;
-    printf("\n\n ---------------------------------CHECK-ATM-BALANCE-------------------------------------\n\n");
+    printf("\n\n *---------------------------------CHECK-ATM-BALANCE-------------------------------------*\n\n");
     printf("Type of Note\tNumber\tValue\n");
     for (i = 0; i < NUMBER_OF_NOTE_TYPE; i++)
     {
@@ -487,7 +487,7 @@ void check_atm_balance()
     }
 
     printf("Total Amount available in the ATM = Rs. %d \n", total_amount);
-    printf("\n\n ---------------------------------------------------------------------------------------");
+    printf("\n\n *---------------------------------------------------------------------------------------*");
 }
 
 // 3.5 displaying mini statement
@@ -499,9 +499,9 @@ void show_mini_statement(int account_number)
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("\n------------------------------MESSAGE------------------------------------\n\n");
+        printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
         printf("No transaction history available for this account.\n");
-        printf("\n-------------------------------------------------------------------------\n\n");
+        printf("\n*-------------------------------------------------------------------------*\n\n");
         return;
     }
 
@@ -534,14 +534,14 @@ void show_mini_statement(int account_number)
     fclose(file);
 
     int start_index = (num_transactions > 10) ? (num_transactions - 10) : 0, i;
-    printf("\n\n --------------------------------MINI-STATEMENT-----------------------------------------------------\n\n");
+    printf("\n\n *--------------------------------MINI-STATEMENT-----------------------------------------------------*\n\n");
     printf("Transaction Number\tDescription\t\tCredit / Debit\t\tAmount\t\tClosing Balance\n");
     for (i = start_index; i < num_transactions; i++)
     {
         printf("\t%d\t\t%s\t\t%s\t\t%.2f\t\t%.2f\n", transaction_number, transactions[i].description,
                transactions[i].credit_debit, transactions[i].amount, transactions[i].closing_balance);
     }
-    printf("\n\n -----------------------------------------------------------------------------------------------------");
+    printf("\n\n *-----------------------------------------------------------------------------------------------------*");
 }
 
 // 3.Operations in ATM
@@ -551,7 +551,7 @@ void operate_atm_process(int account_number)
     bool exit_atm_process = false;
     while (!exit_atm_process)
     {
-        printf("\n\n -----------------------------------ATM-OPERATIONS--------------------------------------\n\n");
+        printf("\n\n *-----------------------------------ATM-OPERATIONS--------------------------------------*\n\n");
 
         printf("ATM Options:\n");
         printf("1. Check Balance\n");
@@ -584,16 +584,16 @@ void operate_atm_process(int account_number)
             exit_atm_process = true;
             break;
         default:
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Invalid choice. Please try again.\n");
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
         }
     }
 }
 
 void main_menu()
 {
-    printf("\n\n -------------------------------------MAIN-MENU-----------------------------------------\n\n");
+    printf("\n\n *-------------------------------------MAIN-MENU-----------------------------------------*\n\n");
 
     printf("1. Load Cash to ATM\n");
     printf("2. Show Customer Details\n");
@@ -636,9 +636,9 @@ int main()
             }
             else
             {
-                printf("\n------------------------------MESSAGE------------------------------------\n\n");
+                printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
                 printf("Invalid Account Number or PIN. Please try again.\n");
-                printf("\n-------------------------------------------------------------------------\n\n");
+                printf("\n*-------------------------------------------------------------------------*\n\n");
             }
             break;
         case '4':
@@ -646,9 +646,9 @@ int main()
             printf("Exiting the application...  Done!\n");
             return 0;
         default:
-            printf("\n------------------------------MESSAGE------------------------------------\n\n");
+            printf("\n*------------------------------MESSAGE------------------------------------*\n\n");
             printf("Invalid choice. Please try again.\n");
-            printf("\n-------------------------------------------------------------------------\n\n");
+            printf("\n*-------------------------------------------------------------------------*\n\n");
         }
     }
 
