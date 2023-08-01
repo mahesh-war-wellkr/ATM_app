@@ -62,6 +62,7 @@ void loading_cash_to_atm()
         }
     }
     printf("\n\n *---------------------------------------------------------------------------------------*");
+    check_atm_balance();
 }
 
 // saving the data loaded to a file
